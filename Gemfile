@@ -17,7 +17,7 @@ gem "grape-swagger-representable", "~> 0.2"
 gem "rswag-ui"
 # https://stackoverflow.com/questions/44656878/how-to-get-routes-by-grape-api
 gem "grape_on_rails_routes"
-gem "doorkeeper", "~> 5.6.6"
+gem "doorkeeper", "~> 5.6.8"
 gem "devise", "~> 4.9"
 gem "sprockets-rails", require: "sprockets/railtie"
 # wine bouncer is not compatible with grape 2
