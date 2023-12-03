@@ -1,23 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+
   use_doorkeeper do
-    controllers applications: 'oauth_applications'
+    controllers applications: "oauth_applications"
   end
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: "users/sessions"
   }
 
   # Project administration via UI
   resources :projects
 
-  namespace :api do
-    namespace :v1 do
-      resources :projects
-      get '/me' => 'credentials#me'
-    end
-  end
+  mount Endava::Base => "/api"
 
-  root to: 'home#index'
+  root to: "home#index"
 end

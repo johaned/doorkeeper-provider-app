@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/johaned/grape-cache.git
+  revision: ef2605e5680282eb8fd12266627e4b4c596d7976
+  specs:
+    grape-cache (0.2.1)
+      activesupport
+      grape (>= 1.2, < 3)
+      rack
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -91,6 +100,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.4)
+    declarative (0.0.20)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -102,6 +112,20 @@ GEM
       railties (>= 5)
     drb (2.2.0)
       ruby2_keywords
+    dry-core (1.0.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.0.0)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     erubi (1.12.0)
     execjs (2.8.1)
     factory_bot (6.4.0)
@@ -114,6 +138,27 @@ GEM
     ffi (1.15.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    grape (2.0.0)
+      activesupport (>= 5)
+      builder
+      dry-types (>= 1.1)
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+    grape-entity (1.0.0)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.3.2)
+    grape-swagger (2.0.0)
+      grape (>= 1.7, < 3.0)
+      rack-test (~> 2)
+    grape-swagger-entity (0.5.2)
+      grape-entity (>= 0.6.0)
+      grape-swagger (>= 1.2.0)
+    grape-swagger-representable (0.2.2)
+      grape-swagger (>= 0.31.0)
+      representable
+    grape_on_rails_routes (0.3.2)
+      rails (>= 3.1.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -142,6 +187,11 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
     minitest (5.20.0)
+    multi_json (1.15.0)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    mustermann-grape (1.0.2)
+      mustermann (>= 1.0.0)
     mutex_m (0.2.0)
     net-imap (0.4.5)
       date
@@ -175,6 +225,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-session (1.0.1)
       rack (< 3)
     rack-test (2.1.0)
@@ -223,6 +275,10 @@ GEM
     regexp_parser (2.8.2)
     reline (0.4.0)
       io-console (~> 0.5)
+    representable (3.2.0)
+      declarative (< 0.1.0)
+      trailblazer-option (>= 0.1.1, < 0.2.0)
+      uber (< 0.2.0)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -245,6 +301,9 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.0)
+    rswag-ui (2.13.0)
+      actionpack (>= 3.1, < 7.2)
+      railties (>= 3.1, < 7.2)
     rubocop (1.57.1)
       base64 (~> 0.1.1)
       json (~> 2.3)
@@ -295,8 +354,10 @@ GEM
     stringio (3.0.9)
     thor (1.3.0)
     timeout (0.4.1)
+    trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uber (0.1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
@@ -319,6 +380,13 @@ DEPENDENCIES
   doorkeeper (~> 5.6.6)
   factory_bot_rails
   faker
+  grape (~> 2.0)
+  grape-cache!
+  grape-entity (~> 1.0)
+  grape-swagger (~> 2.0)
+  grape-swagger-entity (~> 0.3)
+  grape-swagger-representable (~> 0.2)
+  grape_on_rails_routes
   jquery-rails
   listen
   pg (~> 1.5)
@@ -329,6 +397,7 @@ DEPENDENCIES
   redcarpet
   rollbar
   rspec-rails
+  rswag-ui
   rubocop-performance
   rubocop-rails_config
   sprockets-rails
