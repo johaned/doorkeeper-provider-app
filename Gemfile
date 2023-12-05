@@ -11,6 +11,7 @@ gem "grape-swagger", "~> 2.0"
 # For Grape::Entity ( https://github.com/ruby-grape/grape-entity )
 gem "grape-swagger-entity", "~> 0.3"
 gem "grape-cache", github: "johaned/grape-cache"
+gem "grape-pagy"
 
 # For representable ( https://github.com/apotonick/representable )
 gem "grape-swagger-representable", "~> 0.2"
@@ -23,6 +24,7 @@ gem "sprockets-rails", require: "sprockets/railtie"
 # wine bouncer is not compatible with grape 2
 # gem 'wine_bouncer', '~> 1.0.4'
 
+gem "pagy"
 gem "faker"
 gem "jquery-rails"
 

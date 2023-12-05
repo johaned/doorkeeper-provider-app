@@ -4,9 +4,12 @@ module Endava
   module V1
     class Projects < ::Endava::API
       version "v1"
+      helpers Endava::Helpers::SharedParams
+      helpers Grape::Pagy::Helpers
+      # helpers Pagy::Backend
 
       before do
-        doorkeeper_authorize!
+        # doorkeeper_authorize!
       end
 
       desc "Returns a list of your projects." do
@@ -34,9 +37,23 @@ module Endava
         expires_in 30.seconds
         cache_control public: true
       end
+      params do
+        # use :pagination # aliases: includes, use_scope
+        use :pagy
+        use :period
+        # use :pagination
+        use :order
+      end
       get "/", scopes: [:projects, :read] do
-        projects = current_owner.projects
-        present projects, with: Endava::Entities::Project
+        projects = Endava::Queries::Projects.new(current_owner)
+          .from(params[:start_date])
+          .to(params[:end_date])
+          .order_by(params[:order_by], params[:order])
+        # projects = current_owner.projects
+        # ProjectsDecorator.new()
+        binding.pry
+        # present projects, with: Endava::Entities::Project
+        pagy(projects)
       end
 
       params do
