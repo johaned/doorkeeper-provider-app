@@ -34,6 +34,8 @@ module DoorkeeperProvider
       # Doorkeeper::AuthorizedApplicationsController.layout 'application'
     end
 
+    Rack::Timeout::Logger.disable
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -6,6 +6,7 @@ module Endava
       version "v1"
       helpers Endava::Helpers::SharedParams
       helpers Grape::Pagy::Helpers
+      use Grape::Attack::Throttle
       # helpers Pagy::Backend
 
       before do
@@ -42,16 +43,18 @@ module Endava
         use :pagy
         use :period
         # use :pagination
-        use :order
+        use :order, order_by: %i(id created_at), default_order_by: :created_at, default_order: :asc
       end
+      throttle
       get "/", scopes: [:projects, :read] do
         projects = Endava::Queries::Projects.new(current_owner)
           .from(params[:start_date])
           .to(params[:end_date])
           .order_by(params[:order_by], params[:order])
+          .all
         # projects = current_owner.projects
         # ProjectsDecorator.new()
-        binding.pry
+        # binding.pry
         # present projects, with: Endava::Entities::Project
         pagy(projects)
       end

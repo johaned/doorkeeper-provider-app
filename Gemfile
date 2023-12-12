@@ -12,6 +12,7 @@ gem "grape-swagger", "~> 2.0"
 gem "grape-swagger-entity", "~> 0.3"
 gem "grape-cache", github: "johaned/grape-cache"
 gem "grape-pagy"
+gem "grape-attack", path: "../grape-attack"
 
 # For representable ( https://github.com/apotonick/representable )
 gem "grape-swagger-representable", "~> 0.2"
